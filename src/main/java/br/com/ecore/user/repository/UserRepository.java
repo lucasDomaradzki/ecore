@@ -139,14 +139,12 @@ public class UserRepository {
                 .stream().filter(userEntity -> userEntity.getTeam() != null)
                 .collect(Collectors.groupingBy(UserEntity::getTeam));
 
-        List<Membership> m =  collect.keySet().stream().map(teamEntity -> {
+        return collect.keySet().stream().map(teamEntity -> {
             Membership membership = new Membership();
             membership.setTeamId(teamEntity.getId());
             membership.setTeamName(teamEntity.getName());
             membership.setTeamMemberIds(collect.get(teamEntity).stream().map(UserEntity::getId).collect(Collectors.toList()));
             return membership;
         }).collect(Collectors.toList());
-
-        return m;
     }
 }

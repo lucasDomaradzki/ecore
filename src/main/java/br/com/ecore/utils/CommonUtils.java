@@ -14,16 +14,4 @@ public class CommonUtils {
         return value.orElseThrow(() -> new EcoreNotFoundException(message));
     }
 
-    public static <O> String get(O object, Function<O, String> function) {
-        if (object == null) {
-            return "";
-        }
-
-        String result = function.apply(object);
-        if(StringUtils.isBlank(result)) {
-            return "";
-        }
-
-        return result;
-    }
 }

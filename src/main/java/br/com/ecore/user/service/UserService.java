@@ -11,8 +11,6 @@ import br.com.ecore.team.repository.TeamRepository;
 import br.com.ecore.user.json.User;
 import br.com.ecore.user.repository.UserRepository;
 import br.com.ecore.utils.CommonUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +23,6 @@ import static java.text.MessageFormat.format;
 
 @Service
 public class UserService {
-
-    private static final Logger LOGGER = LogManager.getLogger(UserService.class);
 
     @Autowired
     private UserRepository userRepository;
