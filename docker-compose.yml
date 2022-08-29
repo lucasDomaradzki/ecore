@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  ecore-api:
+    build:
+      context: .
+    container_name: ecore-api
+    ports:
+      - "9091:9091"
+      - "9999:9999"
+    depends_on:
+      - ecore-mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://ecore-mysql:3306/ecore
+      SPRING_DATASOURCE_USERNAME: ecore
+      SPRING_DATASOURCE_PASSWORD: ecore
+    networks:
+      ecore-network:
+    tty: true
+
+  ecore-mysql:
+    image: mysql/mysql-server:latest
+    container_name: ecore-mysql
+    volumes:
+      - "./src/main/resources/sql/team-ddl.sql:/data/database/initial-setup/team-ddl.sql"
+      - "./src/main/resources/sql/user-ddl.sql:/data/database/initial-setup/user-ddl.sql"
+      - "./src/main/resources/sql/role-ddl.sql:/data/database/initial-setup/role-ddl.sql"
+      - "./src/main/resources/sql/role-dml.sql:/data/database/initial-setup/role-dml.sql"
+      - "./src/main/resources/sql/create-database.sql:/docker-entrypoint-initdb.d/create-database.sql"
+    environment:
+      MYSQL_DATABASE: ecore
+      MYSQL_USER: ecore
+      MYSQL_PASSWORD: ecore
+      MYSQL_ROOT_PASSWORD: admin
+    networks:
+      ecore-network:
+    tty: true
+
+networks:
+  ecore-network:

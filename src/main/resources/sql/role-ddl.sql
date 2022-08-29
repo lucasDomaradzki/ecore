@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS role (
+	role_id int(6) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(60) NOT NULL,
+	CONSTRAINT pk_team PRIMARY KEY(role_id),
+    CONSTRAINT uk_team UNIQUE (name)
+);
