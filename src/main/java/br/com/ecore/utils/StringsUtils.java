@@ -7,7 +7,7 @@ public class StringsUtils {
     private StringsUtils(){}
 
     public static String prepareRoleName(String role) {
-        return trim(upperCase(replace(role, " ", "_")));
+        return replace(upperCase(trim(role)), " ", "_");
     }
 
 }
