@@ -106,7 +106,7 @@ public class ExistingApiService {
             return;
         }
 
-        throw new EcoreInternalServerException(format("Response is null or response status: {0} expected was not found", HttpStatus.OK));
+        throw new EcoreInternalServerException("Response is null or response status: {0} expected was not found", HttpStatus.OK);
     }
 
 }
