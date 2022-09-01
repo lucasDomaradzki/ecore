@@ -38,10 +38,10 @@ public class UserService {
 
     public User assignRoleToUser(String userId, String roleId) throws EcoreNotFoundException {
         Role role = roleService.findRoleByRoleName(roleId)
-                .orElseThrow(() -> new EcoreNotFoundException(MessageFormat.format("Role {0} does not exist", roleId)));
+                .orElseThrow(() -> new EcoreNotFoundException("Role {0} does not exist", roleId));
 
         User user = userRepository.findUserByUserId(userId)
-                .orElseThrow(() -> new EcoreNotFoundException(format("No user found with user id: {0}", userId)));
+                .orElseThrow(() -> new EcoreNotFoundException("No user found with user id: {0}", userId));
 
         userRepository.assignRoleToUser(userId, role.getId());
         user.setRole(role.getId().toString());
@@ -92,7 +92,7 @@ public class UserService {
 
     public String findRoleByUserId(String userId) throws EcoreNotFoundException {
         return userRepository.findRoleByUserId(userId)
-                .orElseThrow(() -> new EcoreNotFoundException(format("User id: {0} has no role associated", userId)));
+                .orElseThrow(() -> new EcoreNotFoundException("User id: {0} has no role associated", userId));
     }
 
     public Optional<User> findUserByUserId(String userId) {

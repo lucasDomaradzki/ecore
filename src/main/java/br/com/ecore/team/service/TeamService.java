@@ -39,6 +39,7 @@ public class TeamService extends AbstractValidator {
         User user = getOrThrowNotFoundException(optionalUser, format("User with id: {0} does not exist", newRole.getTeamMemberId()));
         Team team = getOrThrowNotFoundException(optionalTeam, format("Team with id: {0} does not exist", teamId));
 
+        validateUserBelongToTeam(team, user);
         createTeamIfNotExists(team);
         userService.findUserOrCreateIfNotExists(user, team);
         userService.assignRoleToUser(newRole.getTeamMemberId(), newRole.getNewRole());
@@ -64,7 +65,7 @@ public class TeamService extends AbstractValidator {
         Optional<Team> optionalTeam = existingApiService.getTeamByTeamId(teamId);
         validateTeam(optionalTeam, teamId);
         // If team does not exist in existing API Exception is thrown
-        Team team = getOrThrowNotFoundException(optionalTeam, format("Team not found with id: {0}", teamId));
+        Team team = getOrThrowNotFoundException(optionalTeam, "Team not found with id: {0}", teamId);
 
         // Creating team in DB
         createTeamIfNotExists(team);

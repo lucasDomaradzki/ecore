@@ -8,7 +8,6 @@ import br.com.ecore.role.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +28,7 @@ public class RoleService {
             return String.valueOf(newRole.getId());
         }
 
-        throw new EcoreAlreadyReportedException(MessageFormat.format("Role {0} can not be created as role already exists", role));
+        throw new EcoreAlreadyReportedException("Role {0} can not be created as role already exists", role);
     }
 
     public Optional<Role> findRoleByRoleName(String roleName) {
