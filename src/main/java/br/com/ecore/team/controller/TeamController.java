@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static java.text.MessageFormat.format;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Api(value = "Team", tags = "Team")
 @RestController
-@RequestMapping(path = "/teams/")
+@RequestMapping(path = "/teams")
 public class TeamController {
 
     @Autowired
@@ -53,7 +52,7 @@ public class TeamController {
         List<User> users = service.findUsersByTeamId(teamId);
 
         if (users.isEmpty()) {
-            throw new EcoreNotFoundException(format("No users found for teamId: {0}", teamId));
+            throw new EcoreNotFoundException("No users found for teamId: {0}", teamId);
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(users);

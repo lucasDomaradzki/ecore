@@ -106,14 +106,7 @@ public class ExistingApiService {
             return;
         }
 
-        throw new EcoreInternalServerException(format("Response is null or response status: {0} expected was not found", HttpStatus.OK));
+        throw new EcoreInternalServerException("Response is null or response status: {0} expected was not found", HttpStatus.OK);
     }
 
-//    public Optional<Team> validateTeamById(String teamId) throws EcoreException {
-//        return getTeamByTeamId(teamId);
-//    }
-//
-//    public Optional<User> validateUserById(String teamMemberId) throws EcoreException {
-//        return getUserByUserId(teamMemberId);
-//    }
 }

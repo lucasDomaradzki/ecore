@@ -4,6 +4,7 @@ import br.com.ecore.exception.EcoreException;
 import br.com.ecore.membership.json.Membership;
 import br.com.ecore.membership.service.MembershipService;
 import br.com.ecore.user.json.User;
+import br.com.ecore.utils.StringsUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

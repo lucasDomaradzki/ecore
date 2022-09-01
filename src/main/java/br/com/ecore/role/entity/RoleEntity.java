@@ -10,7 +10,7 @@ public class RoleEntity {
 
     @Id
     @Column(name = "role_id")
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")

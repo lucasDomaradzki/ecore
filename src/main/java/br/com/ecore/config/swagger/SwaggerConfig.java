@@ -21,11 +21,6 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("br.com.ecore")).paths(PathSelectors.any()).build().apiInfo(this.apiInfo());
     }
 
-    /**
-     * Informações da API
-     *
-     * @return Api Info
-     */
     private ApiInfo apiInfo() {
         return new ApiInfo("Ecore", "Ecore application", "0.0.1-SNAPSHOT", "Terms of service", new Contact("Lucas Domaradzki Campos", "https://www.e-core.com", "LDOMARADZKI@GMAIL.COM"), "...", "https://www.e-core.com", new ArrayList<>());
     }
