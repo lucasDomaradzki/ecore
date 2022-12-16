@@ -4,7 +4,7 @@ Ecore application
 
 ### Solution
 
-The goal of this application is to consume the existing service/api that provides user and team information and be keep the role information for users.
+The goal of this application is to consume the existing service/api that provides user and team information and keep the role information for users.
 
 The application reaches for existing service to check if user/team is still available/active and updates database to keep track of changes and have valid membership information.
 
